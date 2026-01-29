@@ -1,47 +1,59 @@
 import pygame
 import random
 import math
+import os
 
 pygame.init()
 pygame.mixer.init()
 
-# --- Path ---
-Music_Path = r"C:\Users\user\Desktop\Games\bgm.mp3"
-Background_Image_Path = r"C:\Users\user\Desktop\Games\background.jpg"
-Pixel_Font_Path = r"C:\Users\user\Desktop\Games\PressStart2P-Regular.ttf"
+BASE_PATH = os.path.dirname(os.path.abspath(__file__))
 
-Normal1 = r"C:\Users\user\Desktop\Games\boss\normal-state\normal1.png"
-Normal2 = r"C:\Users\user\Desktop\Games\boss\normal-state\normal2.png"
-Normal3 = r"C:\Users\user\Desktop\Games\boss\normal-state\normal3.png"
+def get_asset_path(*path_parts):
+    """Joins the base directory with the provided folder/file names."""
+    return os.path.join(BASE_PATH, *path_parts)
 
-Attack1 = r"C:\Users\user\Desktop\Games\boss\attack-state\attack1.png"
-Attack2 = r"C:\Users\user\Desktop\Games\boss\attack-state\attack2.png"
-Attack3 = r"C:\Users\user\Desktop\Games\boss\attack-state\attack3.png"
-Attack4 = r"C:\Users\user\Desktop\Games\boss\attack-state\attack4.png"
+# --- Universal Paths ---
+Music_Path = get_asset_path("bgm.mp3")
+Background_Image_Path = get_asset_path("background.jpg")
+Pixel_Font_Path = get_asset_path("PressStart2P-Regular.ttf")
 
-Damage1 = r"C:\Users\user\Desktop\Games\boss\damage-state\damage-light.png"   
-Damage2 = r"C:\Users\user\Desktop\Games\boss\damage-state\damage-heavy.png"
-Dead_PNG_Path = r"C:\Users\user\Desktop\Games\boss\dead\pixil-frame-0.png"
+# Boss States
+Normal1 = get_asset_path("boss", "normal-state", "normal1.png")
+Normal2 = get_asset_path("boss", "normal-state", "normal2.png")
+Normal3 = get_asset_path("boss", "normal-state", "normal3.png")
 
-Knight_Normal1= r"C:\Users\user\Desktop\Games\Knight\normal-state\knight1.png"
-Knight_Normal2= r"C:\Users\user\Desktop\Games\Knight\normal-state\knight2.png"
-Knight_Normal3= r"C:\Users\user\Desktop\Games\Knight\normal-state\knight3.png"
-Knight_Normal4= r"C:\Users\user\Desktop\Games\Knight\normal-state\knight4.png"
+Attack1 = get_asset_path("boss", "attack-state", "attack1.png")
+Attack2 = get_asset_path("boss", "attack-state", "attack2.png")
+Attack3 = get_asset_path("boss", "attack-state", "attack3.png")
+Attack4 = get_asset_path("boss", "attack-state", "attack4.png")
 
-Mage_Normal1=r"C:\Users\user\Desktop\Games\Mage\normal-state\mage1.png"
-Mage_Normal2=r"C:\Users\user\Desktop\Games\Mage\normal-state\mage2.png"
-Mage_Normal3=r"C:\Users\user\Desktop\Games\Mage\normal-state\mage3.png"
-Mage_Normal4=r"C:\Users\user\Desktop\Games\Mage\normal-state\mage4.png"
+Damage1 = get_asset_path("boss", "damage-state", "damage-light.png")   
+Damage2 = get_asset_path("boss", "damage-state", "damage-heavy.png")
+Dead_PNG_Path = get_asset_path("boss", "dead", "pixil-frame-0.png")
 
-Special_Normal1=r"C:\Users\user\Desktop\Games\Special\special1.png"
-Special_Normal2=r"C:\Users\user\Desktop\Games\Special\special2.png"
-Special_Normal3=r"C:\Users\user\Desktop\Games\Special\special3.png"
-Special_Normal4=r"C:\Users\user\Desktop\Games\Special\special4.png"
+# Knight
+Knight_Normal1 = get_asset_path("Knight", "normal-state", "knight1.png")
+Knight_Normal2 = get_asset_path("Knight", "normal-state", "knight2.png")
+Knight_Normal3 = get_asset_path("Knight", "normal-state", "knight3.png")
+Knight_Normal4 = get_asset_path("Knight", "normal-state", "knight4.png")
 
-Tank_Normal1=r"C:\Users\user\Desktop\Games\Tank\tank1.png"
-Tank_Normal2=r"C:\Users\user\Desktop\Games\Tank\tank2.png"
-Tank_Normal3=r"C:\Users\user\Desktop\Games\Tank\tank3.png"
-Tank_Normal4=r"C:\Users\user\Desktop\Games\Tank\tank4.png"
+# Mage
+Mage_Normal1 = get_asset_path("Mage", "normal-state", "mage1.png")
+Mage_Normal2 = get_asset_path("Mage", "normal-state", "mage2.png")
+Mage_Normal3 = get_asset_path("Mage", "normal-state", "mage3.png")
+Mage_Normal4 = get_asset_path("Mage", "normal-state", "mage4.png")
+
+# Special
+Special_Normal1 = get_asset_path("Special", "special1.png")
+Special_Normal2 = get_asset_path("Special", "special2.png")
+Special_Normal3 = get_asset_path("Special", "special3.png")
+Special_Normal4 = get_asset_path("Special", "special4.png")
+
+# Tank
+Tank_Normal1 = get_asset_path("Tank", "tank1.png")
+Tank_Normal2 = get_asset_path("Tank", "tank2.png")
+Tank_Normal3 = get_asset_path("Tank", "tank3.png")
+Tank_Normal4 = get_asset_path("Tank", "tank4.png")
 # --- GAME SCREEN SETUP ---
 WIDTH, HEIGHT = 1000, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
